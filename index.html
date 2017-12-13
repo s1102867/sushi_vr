@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>VR Sushi Bar</title>
+      <meta charset="utf-8" />
+      <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+      <script src="js/jquery-3.2.1.min.js"></script>
+      <script src="js/main.js"></script>
+  </head>
+  <body>
+    <audio src="geluid/restaurantMuziek.mp3" type="audio/mpeg" autoplay loop></audio>
+    <a-scene id="scene">
+      <!-- Creeër achtergrond -->
+      <a-sky
+        color="blue">
+      </a-sky>
+        
+   
+    
+      
+        
+      <!--text voor de klaarknop-->
+      <a-text id="klaartext" value="Klaar" position="-0.1 0.5 -0.25" rotation="280 270 0"></a-text>
+      
+      <!-- Creeër klant -->
+      <a-box
+        id="persoon"
+        position="0.3 1 -4.5"
+        src="images/persoon.jpg">
+        <a-text
+          id="klanttekst"
+          value=""
+          position="-0.4 0.8 0">
+        </a-text>
+      </a-box>
+
+      <!-- Creeër ingredient rijst -->
+      <a-box
+        id="rijst"
+        position="-0.5 0.15 -2"
+        src="images/rijst.jpg"
+        height="0.3"
+        width="0.4">
+      </a-box>
+
+      <!-- Creeër ingredient zalm -->
+      <a-box
+        id="zalm"
+        position="1 0.15 -2"
+        src="images/zalm.png"
+        height="0.3"
+        width="0.3">
+      </a-box>
+
+      <!-- Creeër snijplank -->
+      <a-box
+        id="snijplank"
+        position="0.3 0.08 -1"
+        src="images/snijplank.jpg"
+        height="0.15"
+        width="2">
+      </a-box>
+     
+    <!-- Creeër bord-->  
+    <a-box
+        id="bord"
+        position="0.3 0.08 -3.5"
+        color="#131416"
+        height="0.15"
+        width="2">
+      </a-box>
+     
+    <!-- initialiseer blender modellen-->    
+    <a-assets>
+        <!--sushi nigiri model-->
+        <a-asset-item 
+                      id="tree-obj" 
+                      src="images/zalm.obj">
+        </a-asset-item>
+        <a-asset-item 
+                      id="tree-mtl" 
+                      src="images/zalm.mtl">
+        </a-asset-item>
+ 
+  
+               <!--hangiri model-->
+        <a-asset-item 
+                      id="hangiri-obj" 
+                      src="images/groteHangiri.obj">
+        </a-asset-item>
+        <a-asset-item 
+                      id="hangiri-mtl" 
+                      src="images/groteHangiri.mtl">
+        </a-asset-item> 
+        
+        <!--bar meubel-->
+        <a-asset-item 
+                      id="bar-obj" 
+                      src="images/final_bar.obj">
+        </a-asset-item>
+        <a-asset-item 
+                      id="bar-mtl" 
+                      src="images/final_bar.mtl">
+        </a-asset-item> 
+        
+        <!--Recepten boek-->
+        <a-asset-item 
+                      id="recept-obj" 
+                      src="images/kookboek.obj">
+        </a-asset-item> 
+        <a-asset-item 
+                      id="recept-mtl" 
+                      src="images/kookboek.mtl">
+        </a-asset-item> 
+        
+        <!--mes-->
+        <a-asset-item 
+                      id="mes-obj" 
+                      src="images/mes.obj">
+        </a-asset-item> 
+        <a-asset-item 
+                      id="mes-mtl" 
+                      src="images/mes.mtl">
+        </a-asset-item> 
+        <!--Laad restaurant-->
+        <a-asset-item
+                      id="rest-obj"
+                      src="images/restaurant.obj">
+        </a-asset-item>
+        <a-asset-item
+                      id="rest-mtl"
+                      src="images/restaurant.mtl">
+        </a-asset-item>
+        
+    </a-assets>
+
+    <!--Laad het hangiri model-->
+    <a-entity position="-1.5 0.2 -2" obj-model="obj: #hangiri-obj; mtl: #hangiri-mtl"></a-entity>
+
+    <!--Laad het bar meubel-->    
+    <a-entity id="bar" rotation="0 90 0" position="0.3 0 -3" obj-model="obj: #bar-obj; mtl: #bar-mtl"></a-entity>
+      
+    <!--Laad het receptenboek-->
+    <a-entity rotation="0 180 0" position="0 0 2" obj-model="obj: #recept-obj; mtl: #recept-mtl"></a-entity>
+        
+    <!--Laad het mes-->
+    <a-entity position="-1.5 1 -2" obj-model="obj: #mes-obj; mtl: #mes-mtl"></a-entity>
+        
+    <!--Laad het restaurant-->
+    <a-entity position="-1.5 0 -2" obj-model="obj: #rest-obj; mtl: #rest-mtl"></a-entity>
+        
+      <!-- Creeër camera voor cursor -->
+      <a-camera>
+        <a-cursor
+          id="cursor"
+          color="aqua">
+        </a-cursor>
+      </a-camera>
+
+    </a-scene>
+
+  </body>
+</html>
