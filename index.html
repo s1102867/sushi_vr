@@ -8,147 +8,278 @@
       <script src="js/main.js"></script>
   </head>
   <body>
-    <audio src="geluid/restaurantMuziek.mp3" type="audio/mpeg" autoplay loop></audio>
     <a-scene id="scene">
-      <!-- Creeër achtergrond -->
-      <a-sky
-        color="blue">
-      </a-sky>
-        
-   
-    
-      
-        
+       <!--Maak geluid-->
+      <a-sound
+               src="src: url(geluid/restaurantMuziek.mp3)"
+               autoplay="true"
+               loop="true">
+      </a-sound>
+      <!-- Creeër vloer -->
+      <a-plane
+               rotation="-90 0 0"
+               position="0 0 0"
+               src="images/tegel.jpg"
+               width="16"
+               height="16">
+        </a-plane>
+
+    <!-- Creeër plafond -->
+          <a-plane
+               rotation="90 0 0"
+               position="0 4 0"
+               src="images/plafond.jpg"
+               width="16"
+               height="16">
+        </a-plane>
+
+     <!-- Creeër muur voor -->
+
+        <a-plane
+               position="0 2 -8"
+               src="images/muren.jpg"
+               width="16"
+               height="4">
+        </a-plane>
+
+          <!-- Creeër muur achter -->
+
+        <a-plane
+               rotation="180 0 180"
+               position="0 2 8"
+               src="images/muren.jpg"
+               width="16"
+               height="4">
+        </a-plane>
+
+          <!-- Creeër muur links -->
+
+        <a-plane
+               rotation="0 90 0"
+               position="-8 2 0"
+               src="images/muren.jpg"
+               width="16"
+               height="4">
+        </a-plane>
+
+
+          <!-- Creeër muur rechts -->
+
+        <a-plane
+               rotation="0 -90 0"
+               position="8 2 0"
+               src="images/muren.jpg"
+               width="16"
+               height="4">
+        </a-plane>
+
+
+
+
       <!--text voor de klaarknop-->
-      <a-text id="klaartext" value="Klaar" position="-0.1 0.5 -0.25" rotation="280 270 0"></a-text>
-      
+      <a-text id="klaartext" value="Klaar" position="0 0.3 -0.3" rotation="280 270 0"></a-text>
+
       <!-- Creeër klant -->
       <a-box
         id="persoon"
-        position="0.3 1 -4.5"
+        position="0.3 2 -5.5"
         src="images/persoon.jpg">
         <a-text
           id="klanttekst"
           value=""
-          position="-0.4 0.8 0">
+          position="-0.4 0.8 0"
+          color="black">
         </a-text>
       </a-box>
 
       <!-- Creeër ingredient rijst -->
-      <a-box
+     <!-- <a-box
         id="rijst"
-        position="-0.5 0.15 -2"
+        position="-0.5 0.9 -2"
         src="images/rijst.jpg"
         height="0.3"
         width="0.4">
-      </a-box>
+      </a-box>-->
 
       <!-- Creeër ingredient zalm -->
-      <a-box
+      <!--<a-box
         id="zalm"
-        position="1 0.15 -2"
+        position="-0.1 0.2 0"
+        rotation="0 90 0"
         src="images/zalm.png"
-        height="0.3"
-        width="0.3">
-      </a-box>
+        height="0.2"
+        width="0.3"
+        depth="1">
+      </a-box>-->
 
       <!-- Creeër snijplank -->
       <a-box
+        rotation="0 90 0"
         id="snijplank"
-        position="0.3 0.08 -1"
+        position="2.5 0.9 -0.3"
         src="images/snijplank.jpg"
-        height="0.15"
-        width="2">
+        height="0.10"
+        width="1.5">
       </a-box>
-     
-    <!-- Creeër bord-->  
+
+    <!-- Creeër bord-->
     <a-box
         id="bord"
-        position="0.3 0.08 -3.5"
+        position="0.3 0.9 -2.2"
         color="#131416"
         height="0.15"
         width="2">
       </a-box>
-     
-    <!-- initialiseer blender modellen-->    
+
+    <!-- initialiseer blender modellen-->
     <a-assets>
+
+        <a-asset-item
+                      id="bakje-obj"
+                      src="images/bakje.obj">
+        </a-asset-item>
+
+        <a-asset-item
+                      id="bakje-mtl"
+                      src="images/bakje.mtl">
+        </a-asset-item>
+
+
         <!--sushi nigiri model-->
-        <a-asset-item 
-                      id="tree-obj" 
-                      src="images/zalm.obj">
+        <a-asset-item
+                      id="tree-obj"
+                      src="images/SushiNigiri.obj">
         </a-asset-item>
-        <a-asset-item 
-                      id="tree-mtl" 
-                      src="images/zalm.mtl">
+        <a-asset-item
+                      id="tree-mtl"
+                      src="images/SushiNigiri.mtl">
         </a-asset-item>
- 
-  
-               <!--hangiri model-->
-        <a-asset-item 
-                      id="hangiri-obj" 
+
+
+        <!--hangiri model-->
+        <a-asset-item
+                      id="hangiri-obj"
                       src="images/groteHangiri.obj">
         </a-asset-item>
-        <a-asset-item 
-                      id="hangiri-mtl" 
+        <a-asset-item
+                      id="hangiri-mtl"
                       src="images/groteHangiri.mtl">
-        </a-asset-item> 
-        
+        </a-asset-item>
+
+        <!--hangiri model leeg-->
+        <a-asset-item
+                      id="hangirihalfleeg-obj"
+                      src="images/hangiri.obj">
+        </a-asset-item>
+        <a-asset-item
+                      id="hangirihalfleeg-mtl"
+                      src="images/hangiri.mtl">
+        </a-asset-item>
+        <!--Rijst voor in hangiri bak-->
+        <a-asset-item
+                      id="hangiririjst-obj"
+                      src="images/hangiririjst.obj">
+        </a-asset-item>
+        <a-asset-item
+                      id="hangiririjst-mtl"
+                      src="images/hangiririjst.mtl">
+        </a-asset-item>
+
         <!--bar meubel-->
-        <a-asset-item 
-                      id="bar-obj" 
+        <a-asset-item
+                      id="bar-obj"
                       src="images/final_bar.obj">
         </a-asset-item>
-        <a-asset-item 
-                      id="bar-mtl" 
+        <a-asset-item
+                      id="bar-mtl"
                       src="images/final_bar.mtl">
-        </a-asset-item> 
-        
+        </a-asset-item>
+
         <!--Recepten boek-->
-        <a-asset-item 
-                      id="recept-obj" 
-                      src="images/kookboek.obj">
-        </a-asset-item> 
-        <a-asset-item 
-                      id="recept-mtl" 
-                      src="images/kookboek.mtl">
-        </a-asset-item> 
-        
+        <a-asset-item
+                      id="recept-obj"
+                      src="images/kookboek1.obj">
+        </a-asset-item>
+        <a-asset-item
+                      id="recept-mtl"
+                      src="images/kookboek1.mtl">
+        </a-asset-item>
+
         <!--mes-->
-        <a-asset-item 
-                      id="mes-obj" 
+        <a-asset-item
+                      id="mes-obj"
                       src="images/mes.obj">
-        </a-asset-item> 
-        <a-asset-item 
-                      id="mes-mtl" 
+        </a-asset-item>
+        <a-asset-item
+                      id="mes-mtl"
                       src="images/mes.mtl">
-        </a-asset-item> 
-        <!--Laad restaurant-->
+        </a-asset-item>
+
+        <!--Plakje zalm-->
         <a-asset-item
-                      id="rest-obj"
-                      src="images/restaurant.obj">
+                      id="plakzalm-obj"
+                      src="images/plakjeZalm.obj">
         </a-asset-item>
         <a-asset-item
-                      id="rest-mtl"
-                      src="images/restaurant.mtl">
+                      id="plakzalm-mtl"
+                      src="images/plakjeZalm.mtl">
         </a-asset-item>
-        
+
+        <!--Gesneden zalm-->
+        <a-asset-item
+                      id="snijzalm-obj"
+                      src="images/gesnedenZalm.obj">
+        </a-asset-item>
+        <a-asset-item
+                      id="snijzalm-mtl"
+                      src="images/gesnedenZalm.mtl">
+        </a-asset-item>
+
+
     </a-assets>
 
-    <!--Laad het hangiri model-->
-    <a-entity position="-1.5 0.2 -2" obj-model="obj: #hangiri-obj; mtl: #hangiri-mtl"></a-entity>
+    <!--Laad het bakje model-->
+    <a-entity id="zalmbak" position="3 0.8 -2.5" obj-model="obj: #bakje-obj; mtl: #bakje-mtl"></a-entity>
 
-    <!--Laad het bar meubel-->    
+
+    <!--Laad het hangiri model-->
+    <!-- <a-entity id="hangiri" position="-1.5 0.9 -2" obj-model="obj: #hangiri-obj; mtl: #hangiri-mtl"></a-entity> -->
+
+    <!--Laad het hangiri model halfleeg-->
+    <a-entity id="hangiri" position="-1.5 0.9 -2" obj-model="obj: #hangirihalfleeg-obj; mtl: #hangirihalfleeg-mtl"></a-entity>
+
+    <!--Laad de rijst voor hangiri model-->
+    <a-entity id="hangiririjst" position="-1.5 1.05 -2" obj-model="obj: #hangiririjst-obj; mtl: #hangiririjst-mtl"></a-entity>
+
+    <!--Laad het bar meubel-->
     <a-entity id="bar" rotation="0 90 0" position="0.3 0 -3" obj-model="obj: #bar-obj; mtl: #bar-mtl"></a-entity>
-      
+
     <!--Laad het receptenboek-->
-    <a-entity rotation="0 180 0" position="0 0 2" obj-model="obj: #recept-obj; mtl: #recept-mtl"></a-entity>
-        
+    <a-entity id="recept" rotation="0 180 0" position="0.3 0 1.5" obj-model="obj: #recept-obj; mtl: #recept-mtl"></a-entity>
+
     <!--Laad het mes-->
-    <a-entity position="-1.5 1 -2" obj-model="obj: #mes-obj; mtl: #mes-mtl"></a-entity>
-        
-    <!--Laad het restaurant-->
-    <a-entity position="-1.5 0 -2" obj-model="obj: #rest-obj; mtl: #rest-mtl"></a-entity>
-        
+    <a-entity id="mes" position="2.5 0.7 0.6" obj-model="obj: #mes-obj; mtl: #mes-mtl"></a-entity>
+
+    <!--Laad plakjes zalm-->
+    <a-entity id="plakzalm" position="2.78 0.7 -2.7" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <a-entity id="plakzalm1" position="3.22 0.7 -2.7" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <a-entity id="plakzalm2" position="2.78 0.7 -2.3" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <a-entity id="plakzalm3" position="3.22 0.7 -2.3" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <!--Zalm ongesneden-->
+    <a-entity id="zalm" position="2.5 0.8 -0.6" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <a-entity id="zalm1" position="2.5 0.8 -0.4" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <a-entity id="zalm2" position="2.5 0.8 -0.2" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+    <a-entity id="zalm3" position="2.5 0.8 0" obj-model="obj: #plakzalm-obj; mtl: #plakzalm-mtl"></a-entity>
+
+
+
       <!-- Creeër camera voor cursor -->
       <a-camera>
         <a-cursor
@@ -158,6 +289,5 @@
       </a-camera>
 
     </a-scene>
-
   </body>
 </html>
